@@ -12,21 +12,21 @@
 не должна быть линейной"""
 
 def edit_contact(phonebook,search_key):
-    search_key = search_key.capitalize()
     for i in range(len(phonebook)):
         if search_key in phonebook[i].values():
             phonebook[i]['last_name'] = input('Фамилия: ')
             phonebook[i]['first_name'] = input('Имя: ')
             phonebook[i]['middle_name'] = input('Отчество: ')
             phonebook[i]['phone_number'] = input('Номер телефона: ') + '\n'
+    print(phonebook)
 
 def del_contact(phonebook,search_key):
-    search_key = search_key.capitalize()
+#    search_key = search_key.capitalize()
     for i in range(len(phonebook) -1, -1, -1):
         if search_key in phonebook[i].values():
             del phonebook[i]  
-    return  
-
+            return  
+      
 def load_file(filename):
     phonebook = []
     with open(filename, 'r', encoding='UTF-8') as file:
@@ -40,7 +40,6 @@ def load_file(filename):
             })
         print('Данные загружены')
     return phonebook
-
 
 def search_contacts(phonebook, search_key):
     result = []
@@ -72,7 +71,6 @@ def add_contact(phonebook, last_name, first_name, middle_name, phone_number):
 def main():
     phonebook = []
     filename = 'contacts.txt'
-
     while True:
         print ("1. Добавить контакт")
         print ("2. Сохранить контакт")
@@ -113,17 +111,6 @@ def main():
             break
         else:
             print('Некорретный выбор. Попробуйте снова')
-        
-
-
-
-
-
+       
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
