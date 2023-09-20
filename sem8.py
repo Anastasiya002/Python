@@ -13,7 +13,7 @@
 
 def edit_contact(phonebook,search_key):
     for i in range(len(phonebook)):
-        if search_key in phonebook[i].values():
+        if search_key.capitalize() in phonebook[i].values():
             phonebook[i]['last_name'] = input('Фамилия: ')
             phonebook[i]['first_name'] = input('Имя: ')
             phonebook[i]['middle_name'] = input('Отчество: ')
@@ -21,9 +21,8 @@ def edit_contact(phonebook,search_key):
     print(phonebook)
 
 def del_contact(phonebook,search_key):
-#    search_key = search_key.capitalize()
     for i in range(len(phonebook) -1, -1, -1):
-        if search_key in phonebook[i].values():
+        if search_key.capitalize() in phonebook[i].values():
             del phonebook[i]  
             return  
       
@@ -102,10 +101,10 @@ def main():
         elif choice == '5':
             phonebook = load_file(filename)
         elif choice == '6':
-            search_key = print('Введите фамилию или имя для редактирования:')
+            search_key = input('Введите фамилию или имя для редактирования:')
             edit_contact(phonebook,search_key)
         elif choice == '7':
-            search_key = print('Введите фамилию или имя для удаления:')
+            search_key = input('Введите фамилию или имя для удаления:')
             del_contact(phonebook,search_key)
         elif choice == '8':
             break
